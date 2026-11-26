@@ -1,0 +1,110 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>주담통화 전체 기간 검색</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--paper:#fff;--ink:#1f2328;--pencil:#646b75;--rule:#e6e8eb;--wash:#f4f5f7;--marker:#fff0a8;color-scheme:light}
+*{box-sizing:border-box}
+html,body{background:var(--paper)}
+body{margin:0;color:var(--ink);font:16px/1.6 "Pretendard Variable","Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;word-break:keep-all}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 24px 72px}
+header.top{margin-bottom:20px}
+h1{font-size:14px;font-weight:700;margin:0 0 16px;color:#d4281c}
+.lead{font-size:30px;line-height:1.35;font-weight:700;letter-spacing:-.02em;margin:0;max-width:24em}
+.when{margin:10px 0 0;font-size:14px;color:var(--pencil)}
+.when a,.empty a{color:var(--ink);text-underline-offset:3px}
+.empty nav.idx{margin:14px 0 0}.empty nav.idx a{text-decoration:none}
+.search{position:sticky;top:0;z-index:2;display:block;background:var(--paper);padding:12px 0}
+.search input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--wash);border:1px solid transparent;
+  border-radius:12px;padding:13px 64px 13px 46px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:var(--pencil)}
+.search input::-webkit-search-cancel-button{display:none}
+.search input:focus{background:var(--paper);border-color:var(--ink)}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--pencil);pointer-events:none}
+.search .cnt{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--pencil)}
+nav.idx{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 32px}
+nav.idx a{display:inline-flex;align-items:baseline;gap:6px;padding:5px 12px;border:1px solid var(--rule);border-radius:999px;
+  color:var(--ink);text-decoration:none;font-size:14px;font-weight:500}
+nav.idx a:hover{border-color:var(--ink)}
+nav.idx a i{font-style:normal;font-size:13px;color:var(--pencil)}
+nav.idx a.etc{color:var(--pencil)}
+section.co{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px 40px;padding:24px 0;border-top:1px solid var(--rule);scroll-margin-top:76px}
+.who{position:sticky;top:84px;align-self:start}
+.who h2{font-size:18px;line-height:1.4;font-weight:700;margin:0}
+.who span{display:block;font-size:13px;color:var(--pencil)}
+.who .code{font-size:14px;margin-top:2px}
+section.etc .who h2{color:var(--pencil)}
+article+article{margin-top:22px}
+article a.t{font-size:16px;line-height:1.5;font-weight:700;color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+article a.t:hover{text-decoration:underline;text-underline-offset:3px}
+article p{margin:6px 0 0;max-width:46em;font-size:14px;line-height:1.65;color:var(--pencil);overflow-wrap:anywhere;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+article .by{margin-top:6px;font-size:13px;color:var(--pencil)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+mark{background:var(--marker);color:inherit;border-radius:2px}
+.empty{padding:40px 0;border-top:1px solid var(--rule);color:var(--pencil)}
+.archive{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-top:48px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px}
+.archive b{font-weight:700;margin-right:4px}
+.archive a{color:var(--pencil);text-decoration:none}
+.archive a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.archive a[aria-current]{color:var(--ink);font-weight:700}
+footer{margin-top:16px;font-size:13px;color:var(--pencil)}
+.surge{margin:0 0 20px;padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.surge h2{font-size:14px;font-weight:700;margin:0 0 8px}
+.surge ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 28px}
+.surge p{margin:0;font-size:14px;color:var(--pencil)}
+.surge li{font-size:15px;font-weight:600}.surge li a{color:var(--ink)}
+.surge li span{margin-left:8px;font-size:13px;font-weight:400;color:var(--pencil)}
+.dis{margin:0 0 20px;padding:10px 14px;background:var(--wash);border-radius:10px;font-size:14px}
+.dis b{display:block;font-size:13px;color:var(--pencil);margin-bottom:4px}
+.dis ul{list-style:none;margin:0;padding:0}.dis li{line-height:1.7;overflow-wrap:anywhere}
+.dis time{color:var(--pencil);margin-right:6px}.dis a{color:var(--ink);text-decoration:none}
+.dis a:hover{text-decoration:underline;text-underline-offset:3px}
+.hide{display:none!important}
+@media (max-width:720px){
+  .wrap{padding:28px 16px 56px}
+  .lead{font-size:24px}
+  section.co{grid-template-columns:minmax(0,1fr);gap:12px;padding:20px 0}
+  .who{position:static;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px}
+  .who .code{margin-top:0}
+}
+
+nav.idx a[aria-pressed=true]{border-color:var(--ink);font-weight:700}
+.none{margin:0;padding:32px 0;border-top:1px solid var(--rule);color:var(--pencil)}
+section.co .none{padding:0;border:0}</style></head><body><div class="wrap">
+<header class="top"><h1><a href="index.html" style="color:inherit;text-decoration:none">주담통화 데일리</a></h1>
+<p class="lead">상장사 2,596곳의 주담통화 후기를 찾아봅니다.</p>
+<p class="when">모아 둔 글 4,513건 · 2026-11-26 기준 · <a href="index.html">오늘 정리로</a></p></header>
+<label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<input id="q" type="search" placeholder="기업명, 종목코드로 찾기" aria-label="기업 검색" autocomplete="off" autofocus><span class="cnt" id="cnt" aria-live="polite"></span></label>
+<nav class="idx" id="pick" aria-label="찾은 기업"></nav><div id="out"></div>
+<footer>네이버 블로그 검색 결과의 제목, 날짜, 링크만 보여 줍니다. 내용은 각 블로거의 의견이며 투자 판단의 근거가 아닙니다.</footer>
+</div><script>
+const q=document.getElementById('q'),cnt=document.getElementById('cnt'),pick=document.getElementById('pick'),out=document.getElementById('out');
+let D=null;const E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('search.json?v=20261126150235').then(r=>r.json()).then(d=>{D=d;D.byCo=d.companies.map(()=>[]);
+d.posts.forEach((p,i)=>p[4].forEach(c=>D.byCo[c].push(i)));
+const v=new URLSearchParams(location.search).get('q');if(v){q.value=v}run()})
+.catch(()=>{out.innerHTML='<p class="none">검색 데이터를 읽지 못했습니다. 파일을 바로 열면(file://) 브라우저가 막으니 웹 주소로 열어 주세요.</p>'});
+const art=p=>'<article><a class="t" href="'+E(p[2])+'" target="_blank" rel="noopener">'+E(p[1])+'</a><div class="by"><time>'+E(p[0])+'</time> · '+E(p[3])+'</div></article>';
+function show(ci){const c=D.companies[ci],ps=D.byCo[ci];
+[...pick.children].forEach(a=>a.setAttribute('aria-pressed',a.dataset.i==ci));
+const meta='<span class="code">'+E(c[1])+'</span><span>'+E(c[2])+(c[3]?' · '+E(c[3]):'')+'</span>';
+out.innerHTML='<section class="co"><div class="who"><h2>'+E(c[0])+'</h2>'+meta+'</div><div class="posts">'+
+(ps.length?ps.map(i=>art(D.posts[i])).join(''):'<p class="none">모아 둔 주담통화 글이 없습니다.</p>')+'</div></section>';
+cnt.textContent=ps.length+'건'}
+function run(){if(!D)return;const v=q.value.trim().toLowerCase();
+history.replaceState(null,'',v?'?q='+encodeURIComponent(q.value.trim()):location.pathname);
+if(!v){pick.innerHTML='';cnt.textContent='';out.innerHTML='<p class="none">기업명이나 종목코드를 넣으면 그 회사의 주담통화 후기를 최신순으로 보여 줍니다.</p>';return}
+const hits=[];D.companies.forEach((c,i)=>{const n=c[0].toLowerCase(),al=(c[4]||'').toLowerCase();
+let r=n===v||c[1]===v?0:n.startsWith(v)||c[1].startsWith(v)?1:n.includes(v)||al.includes(v)?2:-1;if(r>=0)hits.push([r,-D.byCo[i].length,i])});
+hits.sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
+pick.innerHTML=hits.slice(0,12).map(h=>'<a href="#" data-i="'+h[2]+'">'+E(D.companies[h[2]][0])+'<i>'+D.byCo[h[2]].length+'</i></a>').join('');
+if(hits.length){show(hits[0][2]);return}
+const ps=D.posts.filter(p=>p[1].toLowerCase().includes(v));cnt.textContent=ps.length+'건';
+out.innerHTML=ps.length?'<section class="co"><div class="who"><h2>제목 검색</h2><span>상장사 이름이 아니라 제목에서 찾은 글</span></div><div class="posts">'+ps.slice(0,200).map(art).join('')+'</div></section>'
+:'<p class="none">찾는 말이 들어간 기업이나 글이 없습니다.</p>'}
+let t;q.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(run,120)});
+pick.addEventListener('click',e=>{const a=e.target.closest('a');if(a){e.preventDefault();show(+a.dataset.i)}});
+</script></body></html>
