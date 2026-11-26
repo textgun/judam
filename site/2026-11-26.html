@@ -94,7 +94,7 @@ function suggest(v){const go=()=>{if(q.value.trim().toLowerCase()!==v)return;
 const hits=S.companies.map((c,i)=>[c,i]).filter(([c])=>c[0].toLowerCase().includes(v)||c[1].startsWith(v)||(c[4]||'').toLowerCase().includes(v))
 .sort((a,b)=>S.n[b[1]]-S.n[a[1]]).slice(0,8);
 sug.innerHTML=hits.map(([c,i])=>'<a href="search.html?q='+encodeURIComponent(c[0])+'">'+E(c[0])+'<i>'+S.n[i]+'</i></a>').join('')};
-if(S)return go();fetch('search.json?v=20261126150235').then(r=>r.json()).then(d=>{S=d;S.n=d.companies.map(()=>0);
+if(S)return go();fetch('search.json?v=20261126152348').then(r=>r.json()).then(d=>{S=d;S.n=d.companies.map(()=>0);
 d.posts.forEach(p=>p[4].forEach(c=>S.n[c]++));go()}).catch(()=>{})}
 function mark(el,v){const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
 ns.forEach(t=>{const i=t.data.toLowerCase().indexOf(v);if(i<0)return;const r=document.createRange();r.setStart(t,i);r.setEnd(t,i+v.length);const m=document.createElement('mark');r.surroundContents(m)})}
