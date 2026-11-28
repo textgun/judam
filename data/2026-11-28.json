@@ -1,6 +1,35 @@
 {
  "date": "2026-11-28",
- "collected_at": "2026-11-28T00:34+09:00",
- "posts": [],
- "disclosures": {}
+ "collected_at": "2026-11-28T23:34+09:00",
+ "posts": [
+  {
+   "date": "2026-11-28",
+   "title": "네오티스 주담 통화 후기",
+   "desc": "위해 통화 한번 했음.. 3분기 실적이 애매했기에 더 신경써서 통화함 1. 본업(마이크로비트) 동향... 본인의 통화 내용을 가공한 것으로 실제 사실과는 일부 다를 수 있습니다. 참고하십시오.",
+   "link": "https://blog.naver.com/o0h0h/224495816652",
+   "blogger": "일상",
+   "bloglink": "https://blog.naver.com/o0h0h",
+   "companies": []
+  },
+  {
+   "date": "2026-11-28",
+   "title": "IVL3001, 새로운 글로벌 성장 모멘텀",
+   "desc": "'본격'이라고 소박하게 강조 11월 17일 주주대상 IR 및 11월 27일 IR 통화 종합 정리 １. 상대 기업의 위상 및 역량 글로벌에서 잘나가는 바이오텍. 업계 레퍼런스가 매우 좋은 기업. 인벤티지랩이 사업적으로...",
+   "link": "https://blog.naver.com/ghostsignals/224495678519",
+   "blogger": "고스트시그널 (Faded)",
+   "bloglink": "https://blog.naver.com/ghostsignals",
+   "companies": [
+    "인벤티지랩"
+   ]
+  }
+ ],
+ "disclosures": {
+  "인벤티지랩": [
+   {
+    "date": "2026-11-27",
+    "title": "분기보고서 (2026.09)",
+    "rcept_no": "20261127002002"
+   }
+  ]
+ }
 }
